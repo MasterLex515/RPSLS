@@ -3,10 +3,11 @@
 
 #include "pch.h"
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdlib.h>
 #include <time.h>
 #include <string>
+#include <conio.h>
 
 using namespace std;
 
@@ -29,6 +30,10 @@ int CpuAuswahl() //CPU wählt aus
 int Game()
 {
 	bool loop = true;
+	int loopCount = 1;
+	int win = 0;
+	int loss = 0;
+	int draw = 0;
 
 	do
 	{
@@ -39,7 +44,8 @@ int Game()
 
 		// CPU wählt aus
 		int cpuAuswahl = CpuAuswahl();
-		cout << "CPU: " << cpuAuswahl << endl;
+		//cout << "CPU: " << cpuAuswahl << endl;
+		cout <<	"CPU hat gewaehlt." <<	endl;
 
 		// int cpuAuswahl to string
 		string cpu;
@@ -66,7 +72,9 @@ int Game()
 		cout << "Deine Auswahl: ";
 		int SpielerAuswahl;
 		cin >> SpielerAuswahl;
-		cout << "Spieler: " << SpielerAuswahl << endl;
+		//cout << "Spieler: " << SpielerAuswahl << endl;
+      
+        clrscr();
 
 		// int SpielerAuswahl to string
 		string spieler;
@@ -91,11 +99,16 @@ int Game()
 			loop = false;
 			break;
 		}
-
+        
+        
+        cout << "#" << loopCount << "    " << "win: " << win << "    " << "loss: " << loss << "    " << "draw: " << draw << endl;
+        loopCount += 1;
+        cout << "Player : CPU" << endl;
 		// Auswertung | kann vereinfacht werden !!!
 		if (spieler == cpu)
 		{
 			cout << spieler << " : " << cpu << " || " << "DRAW" << endl;
+			draw += 1;
 		}
 		else
 		{
@@ -199,6 +212,7 @@ int Game()
 				}
 			}
 		}
+		
 
 	} while (loop == true);
 
@@ -207,6 +221,9 @@ int Game()
 
 int main(void)
 {
+	bool mainloop = true;
+	do
+	{
 	//Main Menu
 	cout << "########################################" << endl;
 	cout << "# Stein, Papier, Schere, Echse, Spock! #" << endl;
@@ -222,10 +239,18 @@ int main(void)
 
 	if (AuswahlOption == 1)
 	{
-		
+		clrscr();
 		Game();
 	}
-
+	
+	if (AuswahlOption ==	0)
+	{
+		mainloop = false;
+	}
+	clrscr();
+	} while ( mainloop == true );
+	
+	cout <<	"beendet!";
 
 	return 0;
 }
