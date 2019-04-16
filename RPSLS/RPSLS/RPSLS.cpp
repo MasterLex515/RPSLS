@@ -3,8 +3,8 @@
 
 #include "pch.h"
 #include <iostream>
-//#include <stdio.h>
-//#include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <string>
 #include <conio.h>
@@ -45,7 +45,7 @@ int Game()
 		// CPU wählt aus
 		int cpuAuswahl = CpuAuswahl();
 		//cout << "CPU: " << cpuAuswahl << endl;
-		cout <<	"CPU hat gewaehlt." <<	endl;
+		cout << "CPU hat gewaehlt." << endl;
 
 		// int cpuAuswahl to string
 		string cpu;
@@ -73,8 +73,11 @@ int Game()
 		int SpielerAuswahl;
 		cin >> SpielerAuswahl;
 		//cout << "Spieler: " << SpielerAuswahl << endl;
-      
-        clrscr();
+		
+		cout << endl;
+		
+		//system("CLS"); // clearscreen with visual Studio
+		//clrscr(); // clearscreen with c4droid
 
 		// int SpielerAuswahl to string
 		string spieler;
@@ -99,12 +102,11 @@ int Game()
 			loop = false;
 			break;
 		}
-        
-        
-        cout << "#" << loopCount << "    " << "win: " << win << "    " << "loss: " << loss << "    " << "draw: " << draw << endl;
-        loopCount += 1;
-        cout << "Player : CPU" << endl;
-		// Auswertung | kann vereinfacht werden !!!
+
+		//cout << "#" << loopCount << "    " << "win: " << win << "    " << "loss: " << loss << "    " << "draw: " << draw << endl;
+		
+		cout << "Player : CPU" << endl;
+		// Auswertung | kann ggf. vereinfacht werden !!!
 		if (spieler == cpu)
 		{
 			cout << spieler << " : " << cpu << " || " << "DRAW" << endl;
@@ -112,107 +114,124 @@ int Game()
 		}
 		else
 		{
-			if (spieler == "Stein")
+			if (spieler == "Stein" && cpu == "Papier" || spieler == "Papier" && cpu == "Stein")
 			{
-				if (cpu == "Papier")
+				cout << spieler << " : " << cpu << " || " << "Papier umhuellt Stein" << endl;
+				if (spieler == "Papier")
 				{
-					cout << spieler << " : " << cpu << " || " << "Papier umhuellt Stein" << endl;
+					win += 1;
 				}
-				if (cpu == "Schere")
-				{
-					cout << spieler << " : " << cpu << " || " << "Stein schleift Schere" << endl;
-				}
-				if (cpu == "Spock")
-				{
-					cout << spieler << " : " << cpu << " || " << "Spock vaporisiert Stein" << endl;
-				}
-				if (cpu == "Echse")
-				{
-					cout << spieler << " : " << cpu << " || " << "Stein zerquetscht Echse" << endl;
+				else {
+					loss += 1;
 				}
 			}
-
-			if (spieler == "Echse")
+			if (spieler == "Stein" && cpu == "Schere" || spieler == "Schere" && cpu == "Stein")
 			{
-				if (cpu == "Spock")
+				cout << spieler << " : " << cpu << " || " << "Stein schleift Schere" << endl;
+				if (spieler == "Stein")
 				{
-					cout << spieler << " : " << cpu << " || " << "Echse vergiftet Spock" << endl;
+					win += 1;
 				}
-				if (cpu == "Schere")
-				{
-					cout << spieler << " : " << cpu << " || " << "Schere schneidet Echse" << endl;
-				}
-				if (cpu == "Papier")
-				{
-					cout << spieler << " : " << cpu << " || " << "Echse frisst Papier" << endl;
-				}
-				if (cpu == "Stein")
-				{
-					cout << spieler << " : " << cpu << " || " << "Stein zerquetscht Echse" << endl;
+				else {
+					loss += 1;
 				}
 			}
-
-			if (spieler == "Spock")
+			if (spieler == "Stein" && cpu == "Spock" || spieler == "Spock" && cpu == "Stein")
 			{
-				if (cpu == "Schere")
+				cout << spieler << " : " << cpu << " || " << "Spock vaporisiert Stein" << endl;
+				if (spieler == "Spock")
 				{
-					cout << spieler << " : " << cpu << " || " << "Spock zerschlaegt Schere" << endl;
+					win += 1;
 				}
-				if (cpu == "Papier")
-				{
-					cout << spieler << " : " << cpu << " || " << "Papier widerlegt Spock" << endl;
-				}
-				if (cpu == "Echse")
-				{
-					cout << spieler << " : " << cpu << " || " << "Echse vergiftet Spock" << endl;
-				}
-				if (cpu == "Stein")
-				{
-					cout << spieler << " : " << cpu << " || " << "Spock vaporisiert Stein" << endl;
+				else {
+					loss += 1;
 				}
 			}
-
-			if (spieler == "Schere")
+			if (spieler == "Stein" && cpu == "Echse" || spieler == "Echse" && cpu == "Stein")
 			{
-				if (cpu == "Spock")
+				cout << spieler << " : " << cpu << " || " << "Stein zerquetscht Echse" << endl;
+				if (spieler == "Stein")
 				{
-					cout << spieler << " : " << cpu << " || " << "Spock zerschlaegt Schere" << endl;
+					win += 1;
 				}
-				if (cpu == "Papier")
-				{
-					cout << spieler << " : " << cpu << " || " << "Schere schneidet Papier" << endl;
-				}
-				if (cpu == "Echse")
-				{
-					cout << spieler << " : " << cpu << " || " << "Schere schneidet Echse" << endl;
-				}
-				if (cpu == "Stein")
-				{
-					cout << spieler << " : " << cpu << " || " << "Stein schleift Schere" << endl;
+				else {
+					loss += 1;
 				}
 			}
-
-			if (spieler == "Papier")
+			if (spieler == "Echse" && cpu == "Spock" || spieler == "Spock" && cpu == "Echse")
 			{
-				if (cpu == "Spock")
+				cout << spieler << " : " << cpu << " || " << "Echse vergiftet Spock" << endl;
+				if (spieler == "Echse")
 				{
-					cout << spieler << " : " << cpu << " || " << "Papier widerlegt Spock" << endl;
+					win += 1;
 				}
-				if (cpu == "Schere")
-				{
-					cout << spieler << " : " << cpu << " || " << "Schere schneidet Papier" << endl;
+				else {
+					loss += 1;
 				}
-				if (cpu == "Echse")
+			}
+			if (spieler == "Echse" && cpu == "Schere" || spieler == "Schere" && cpu == "Echse")
+			{
+				cout << spieler << " : " << cpu << " || " << "Schere schneidet Echse" << endl;
+				if (spieler == "Schere")
 				{
-					cout << spieler << " : " << cpu << " || " << "Echse frisst Papier" << endl;
+					win += 1;
 				}
-				if (cpu == "Stein")
+				else {
+					loss += 1;
+				}
+			}
+			if (spieler == "Echse" && cpu == "Papier" || spieler == "Papier" && cpu == "Echse")
+			{
+				cout << spieler << " : " << cpu << " || " << "Echse frisst Papier" << endl;
+				if (spieler == "Echse")
 				{
-					cout << spieler << " : " << cpu << " || " << "Papier umhuellt Stein" << endl;
+					win += 1;
+				}
+				else {
+					loss += 1;
+				}
+			}
+			if (spieler == "Spock" && cpu == "Schere" || spieler == "Schere" && cpu == "Spock")
+			{
+				cout << spieler << " : " << cpu << " || " << "Spock zerschlaegt Schere" << endl;
+				if (spieler == "Spock")
+				{
+					win += 1;
+				}
+				else {
+					loss += 1;
+				}
+			}
+			if (spieler == "Spock" && cpu == "Papier" || spieler == "Papier" && cpu == "Spock")
+			{
+				cout << spieler << " : " << cpu << " || " << "Papier widerlegt Spock" << endl;
+				if (spieler == "Papier")
+				{
+					win += 1;
+				}
+				else {
+					loss += 1;
+				}
+			}
+			if (spieler == "Schere" && cpu == "Papier" || spieler == "Papier" && cpu == "Schere")
+			{
+				cout << spieler << " : " << cpu << " || " << "Schere schneidet Papier" << endl;
+				if (spieler == "Schere")
+				{
+					win += 1;
+				}
+				else {
+					loss += 1;
 				}
 			}
 		}
-		
+		cout << endl;
+		cout << "#" << loopCount << "    " << "win: " << win << "    " << "loss: " << loss << "    " << "draw: " << draw << endl;
+		cout << endl;
+		cout << "_________________________________________________________________" << endl;
+		cout << endl;
+
+		loopCount += 1;
 
 	} while (loop == true);
 
@@ -225,6 +244,8 @@ int main(void)
 	do
 	{
 	//Main Menu
+		// very simple Console coloring for windows cmd
+		//system("Color 0F"); // F=background, 3=text
 	cout << "########################################" << endl;
 	cout << "# Stein, Papier, Schere, Echse, Spock! #" << endl;
 	cout << "########################################" << endl;
@@ -234,12 +255,14 @@ int main(void)
 	cout << "0: Exit" << endl;
 	cout << endl;
 	cout << "Eingabe: ";
+
 	int AuswahlOption;
 	cin >> AuswahlOption;
 
 	if (AuswahlOption == 1)
 	{
-		clrscr();
+		system("CLS"); // clearscreen with visual studio
+		//clrscr(); // clearscreen with c4droid
 		Game();
 	}
 	
@@ -247,7 +270,8 @@ int main(void)
 	{
 		mainloop = false;
 	}
-	clrscr();
+	system("CLS"); // clearscreen with visual studio
+	//clrscr(); // clearscreen with c4droid
 	} while ( mainloop == true );
 	
 	cout <<	"beendet!";
