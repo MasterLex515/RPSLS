@@ -8,6 +8,7 @@
 #include <time.h>
 #include <string>
 #include <conio.h>
+//#include <windows.h>
 
 using namespace std;
 
@@ -246,6 +247,7 @@ int main(void)
 	//Main Menu
 		// very simple Console coloring for windows cmd
 		//system("Color 0F"); // F=background, 3=text
+		
 	cout << "########################################" << endl;
 	cout << "# Stein, Papier, Schere, Echse, Spock! #" << endl;
 	cout << "########################################" << endl;
@@ -253,6 +255,9 @@ int main(void)
 	cout << "Optionen:" << endl;
 	cout << "1: Start" << endl;
 	cout << "0: Exit" << endl;
+	cout << endl;
+	
+	cout << endl;
 	cout << endl;
 	cout << "Eingabe: ";
 
